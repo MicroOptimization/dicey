@@ -20,7 +20,7 @@ class MyClient(discord.Client):
             self.text_channel_names.append(str(i))
             self.text_channels.append(i)
         
-        await client.change_presence(activity=discord.Game(name="with Dice"))
+        await client.change_presence(activity=discord.Game(name="with Luck"))
         
     async def on_message(self, message):    
         print('Message from {0.author} from {0.channel}: {0.content}'.format(message))
@@ -35,10 +35,22 @@ class MyClient(discord.Client):
                     faces = 6
                 
                 value = functions.roll_dice(faces)
+                
                 await message.channel.send("Dicey rolled...")
                 await message.channel.send("...{}!".format(value))
-        
-        
+            elif len(words) >= 2 and words[1] == "flip":
+                faces = 2
+                value = functions.roll_dice(faces)
+                
+                if value == 1:
+                    side = "Heads"
+                else:
+                    side = "Tails"
+                
+                await message.channel.send("Dicey flipped...")
+                await message.channel.send("...{}!".format(side))
+                
+                
 client = MyClient()
 
 key = key_retriever.get_key() #Insert your key here
