@@ -13,3 +13,19 @@ def roll_dice(faces):
 def get_sprite_path(face):
     
     return "To be implemented"
+
+def draw_card():
+    card = None
+    
+    return card
+
+class card:
+    
+    def __init__(self, rank, suit):
+        self.rank = rank
+        self.suit = suit
+        
+
+
+
+

@@ -49,7 +49,11 @@ class MyClient(discord.Client):
                 
                 await message.channel.send("Dicey flipped...")
                 await message.channel.send("...{}!".format(side))
+            elif len(words) >= 2 and words[1] == "draw":
+                card = functions.draw_card()
                 
+                await message.channel.send("Dicey drew...")
+                await message.channel.send("...{} of {}!".format(card.rank, card.suit))
                 
 client = MyClient()
 
