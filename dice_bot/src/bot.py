@@ -27,7 +27,7 @@ class MyClient(discord.Client):
         text = message.content
         words = text.split(" ")
         
-        if words[0] == "dicey,".lower():
+        if words[0].lower() == "dicey,":
             if len(words) >= 2 and words[1] == "roll":
                 if len(words) >= 3 and words[2].isdigit():
                     faces = int(words[2])
