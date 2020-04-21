@@ -28,7 +28,7 @@ class MyClient(discord.Client):
         words = text.split(" ")
         
         if words[0].lower() == "dicey,":
-            if len(words) >= 2 and words[1] == "roll":
+            if len(words) >= 2 and words[1].lower() == "roll":
                 if len(words) >= 3 and words[2].isdigit():
                     faces = int(words[2])
                 else:
@@ -38,7 +38,7 @@ class MyClient(discord.Client):
                 
                 await message.channel.send("Dicey rolled...")
                 await message.channel.send("...{}!".format(value))
-            elif len(words) >= 2 and words[1] == "flip":
+            elif len(words) >= 2 and words[1].lower() == "flip":
                 faces = 2
                 value = functions.roll_dice(faces)
                 
@@ -49,7 +49,7 @@ class MyClient(discord.Client):
                 
                 await message.channel.send("Dicey flipped...")
                 await message.channel.send("...{}!".format(side))
-            elif len(words) >= 2 and (words[1] == "draw" or words[1] == "deal"):
+            elif len(words) >= 2 and (words[1].lower() == "draw" or words[1].lower() == "deal"):
                 card = functions.draw_card()
                 
                 await message.channel.send("Dicey drew...")
